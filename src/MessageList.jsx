@@ -13,7 +13,8 @@ export default class MessageList extends Component {
                             user={message.username}
                             content={message.content} />
         } else {
-            return <Notification content={message.content} />
+            return <Notification key={message.id}
+                                 content={message.content} />
         }
       })
 
