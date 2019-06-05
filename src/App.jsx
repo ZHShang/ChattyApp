@@ -49,6 +49,10 @@ const sample = {
 }
 
 class App extends Component {
+
+  socket = new WebSocket("ws://localhost:3001", "protocolOne");
+
+
   constructor(props){
     super(props);
     this.state = {
@@ -58,6 +62,9 @@ class App extends Component {
   }
 
   componentDidMount() {
+    this.socket.onopen = e => {
+      console.log("connection made");
+    }
     console.log("componentDidMount <App />");
     setTimeout(() => {
       console.log("Simulating incoming message");
