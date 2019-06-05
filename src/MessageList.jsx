@@ -5,7 +5,6 @@ import Notification from './notification.jsx';
 export default class MessageList extends Component {
   render() {
     const mess = this.props.messages;
-    console.log(mess);
 
       const ms = mess.map( message => {
         if (message.type === "incomingMessage"){
