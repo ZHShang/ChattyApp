@@ -12,7 +12,8 @@ class App extends Component {
     super(props);
     this.state = {
       currentUser: {name: "Bob"},
-      messages: []
+      messages: [],
+      userCount: 0
     };
   }
 
@@ -44,6 +45,12 @@ class App extends Component {
             prevState.messages.push(message);
             this.setState({messages: prevState.messages});
           });
+          break;
+        case "userCount":
+          this.setState((prevState) => {
+            prevState.userCount = msgToShow.data;
+            this.setState({userCount: prevState.userCount});
+          })
           break;
         default:
           throw new Error("Unknown message type: " + msgToShow.type);
@@ -90,6 +97,9 @@ class App extends Component {
   render(){
     return (
       <div>
+      <nav className="navbar" >
+      <a href="/" className="navbar-brand">Chatty</a><div className="counter">{this.state.userCount} Users Online</div>
+      </nav>
       <MessageList messages={this.state.messages} />
       <ChatBar currentUser={this.state.currentUser} handleNewMessage={this.handleNewMessage} />
       </div>
