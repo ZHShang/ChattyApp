@@ -5,9 +5,6 @@ import ChatBar from './ChatBar.jsx';
 
 class App extends Component {
 
-
-
-
   constructor(props){
     super(props);
     this.state = {
@@ -19,7 +16,6 @@ class App extends Component {
 
   componentDidMount() {
     this.socket = new WebSocket("ws://localhost:3001", "protocolOne");
-
 
     this.socket.onopen = e => {
       console.log("connection made");
@@ -63,33 +59,47 @@ class App extends Component {
   }
 
   handleNewMessage = evt => {
+
     if(evt.keyCode === 13){
+
       if(evt.target.className === "chatbar-username"){
+
         if(evt.target.value.length === 0){
+
           let oldState = this.state;
           oldState.currentUser = {name: "Anonymous"}
           this.setState({currentUser: oldState.currentUser});
+
         } else {
+
           let oldState = this.state;
           const newMsg = {
             type: "postNotification",
             content: oldState.currentUser.name + " has changed their name to " + evt.target.value
+
           }
+
           oldState.currentUser = {name: evt.target.value}
           this.socket.send(JSON.stringify(newMsg));
           this.setState({currentUser: oldState.currentUser});
           return;
+
         }
+
       }
+
       if(evt.target.className ==="chatbar-message"){
+
         const nMessage = {
           type: "postMessage",
           username: this.state.currentUser.name,
           content: evt.target.value
         }
+
         this.socket.send(JSON.stringify(nMessage));
         evt.target.value = "";
-    }}
+
+      }}
 
 
   }
