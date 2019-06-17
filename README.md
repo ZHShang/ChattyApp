@@ -1,45 +1,36 @@
-React Boilerplate
-=====================
+#Summary
 
-A minimal and light dev environment for ReactJS.
+A client-side SPA (single-page app) built with ReactJS, Webpack, Babel, Node.js and Web Sockets. The client-side app communicates with a server via WebSockets for multi-user real-time updates. No persistent database is involved; the focus is on the client-side experience
 
-### Usage
+##Set Up
+Download the server side file first!
+https://github.com/ZHShang/Chatty-App-Server
 
-Clone the boilerplate and create your own git repo.
+##Usage
 
-```
-git clone git@github.com:lighthouse-labs/react-simple-boilerplate.git
-cd react-simple-boilerplate
-git remote rm origin
-git remote add origin [YOUR NEW REPOSITORY]
-# Manually update your package.json file
-```
+Clone the repo to your local machine. Install the dependencies and start the server.
 
-Install the dependencies and start the server.
+1st server
 
-```
 npm install
 npm start
 open http://localhost:3000
-```
+2nd server
 
-### Static Files
+cd to `Chatty-App-Server`
+npm install
+npm start
+open http://localhost:3000
+Static Files
+You can store static files like images, fonts, etc in the build folder.
 
-You can store static files like images, fonts, etc in the `build` folder.
 
-For example, if you copy a file called my_image.png into the build folder you can access it using `http://localhost:3000/build/my_image.png`.
+##Linting
+This project includes React ESLint configuration.
 
-### Linting
-
-This boilerplate project includes React ESLint configuration.
-
-```
 npm run lint
-```
-
-### Dependencies
-
-* React
-* Webpack
-* [babel-loader](https://github.com/babel/babel-loader)
-* [webpack-dev-server](https://github.com/webpack/webpack-dev-server)
+Dependencies
+React
+Webpack
+babel-loader
+webpack-dev-server
