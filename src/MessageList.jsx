@@ -9,6 +9,7 @@ export default class MessageList extends Component {
       const ms = mess.map( message => {
         if (message.type === "incomingMessage"){
             return <Message key={message.id}
+                            color={message.color}
                             user={message.username}
                             content={message.content} />
         } else {
